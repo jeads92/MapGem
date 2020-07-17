@@ -12,6 +12,8 @@ class LoginScreen(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)  # Init method runs gridlayout init.
         self.add_widget(Label(text='New User'))
+        self.add_widget(Label(text='Login'))
+        self.add_widget(Label(text='Skip Login'))
 
 
 class MapGem(App):
@@ -21,4 +23,3 @@ class MapGem(App):
 
 if __name__ == '__main__':
     MapGem().run()
-# git status
