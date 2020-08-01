@@ -1,0 +1,75 @@
+<LoginScreen>
+    cols: 1
+    
+    Button:
+        text: 'New User'
+        on_press: root.to_newuser()
+        
+    Button:
+        text: 'Login'
+        on_press: root.to_userlogin()
+        
+    Button:
+        text: 'Skip Login'
+        on_press: root.to_mainmenu()
+        
+<UserLogin>
+
+    cols: 2
+    
+    Label:
+        text: 'Login to Account'
+    Label:
+        text: ''
+    
+    Label:
+        text: 'Username'
+    TextInput:
+        multiline: False
+        
+    Label:
+        text: 'Password'
+    TextInput:
+        multiline: False
+        password: True
+
+
+<NewAccount>
+    cols: 2
+    Label:
+        text: 'Create New Account'
+    Label:
+        text: ''
+        
+    Label:
+        text: 'Username'
+    TextInput:
+        multiline: False
+    
+    Label:
+        text: 'Password'
+    TextInput:
+        multiline: False
+        password: True
+    
+
+<MainScreen>
+    cols: 1
+    Button:
+        text: 'Create New Maps'
+    Button:
+        text: 'View Maps'
+    Button:
+        text: 'Options'
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
