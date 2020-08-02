@@ -3,12 +3,13 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import Screen
+from kivy.properties import ObjectProperty
 
 
 kivy.require('1.11.1')
 
 
-class LoginScreen(GridLayout):
+class EntryScreen(GridLayout):
 
     def to_newuser(self):
         main_app.screen_manager.current = 'New Account'
@@ -22,11 +23,22 @@ class LoginScreen(GridLayout):
 
 
 class UserLogin(GridLayout):
-    pass
+    name1 = ObjectProperty(None)
+    password1 = ObjectProperty(None)
+
+    def to_mainmenu(self):
+        # the print function is a test. deleat it after
+        # concept for ids and vars is understood.
+        print(f'Name: {self.name1.text}, password: {self.password1.text}')
+        main_app.screen_manager.current = 'Entry Screen'
+
+    def to_login(self):
+        main_app.screen_manager.current = 'Login Screen'
 
 
 class NewAccount(GridLayout):
-    pass
+    def to_mainmenu(self):
+        main_app.screen_manager.current = 'Main Screen'
 
 
 class MainScreen(GridLayout):
@@ -37,9 +49,9 @@ class MapGem(App):
     def build(self):
         self.screen_manager = ScreenManager()
 
-        self.loginscreen = LoginScreen()
-        screen = Screen(name='Login Screen')
-        screen.add_widget(self.loginscreen)
+        self.entry_screen = EntryScreen()
+        screen = Screen(name='Entry Screen')
+        screen.add_widget(self.entry_screen)
         self.screen_manager.add_widget(screen)
 
         self.user_login = UserLogin()

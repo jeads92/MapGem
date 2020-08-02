@@ -1,4 +1,4 @@
-<LoginScreen>
+<EntryScreen>
     cols: 1
     
     Button:
@@ -11,27 +11,40 @@
         
     Button:
         text: 'Skip Login'
-        on_press: root.to_mainmenu()
+        on_press:
+            #root.manager.transition.direction = 'right'
+            root.to_mainmenu()
         
-<UserLogin>
 
+<UserLogin>
+    name1: name
+    password1: password
     cols: 2
-    
+
     Label:
         text: 'Login to Account'
+
     Label:
         text: ''
     
     Label:
         text: 'Username'
+
     TextInput:
+        id: name
         multiline: False
         
     Label:
         text: 'Password'
+
     TextInput:
+        id: password
         multiline: False
         password: True
+        
+    Button:
+        text: 'Submit'
+        on_press: root.to_mainmenu()
 
 
 <NewAccount>
@@ -43,33 +56,34 @@
         
     Label:
         text: 'Username'
+
     TextInput:
         multiline: False
     
     Label:
         text: 'Password'
+
     TextInput:
         multiline: False
         password: True
+
+    Button:
+        text: 'Submit'
+        on_press: root.to_mainmenu()
     
 
 <MainScreen>
     cols: 1
+
     Button:
         text: 'Create New Maps'
+
     Button:
         text: 'View Maps'
+
     Button:
         text: 'Options'
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+    Button:
+        text: 'Test to see if i can call a foreign function to go back to the first screen'
+        on_press: app.UserLogin().to_login()
