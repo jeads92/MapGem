@@ -32,7 +32,6 @@
     GridLayout:
         size_hint_x: 0.5
         pos_hint: {"x":0.25}
-        #pos_hint: {'center_x': root.x, 'center_y':root.y }
         col: 2
         rows: 2
         Label:
@@ -75,7 +74,6 @@
     GridLayout:
         size_hint_x: 0.5
         pos_hint: {"x":0.25}
-        #pos_hint: {'center_x': root.x, 'center_y':root.y }
         col: 2
         rows: 2
         Label:
@@ -140,7 +138,6 @@
     
     BoxLayout:
         size_hint_y: 0.2
-        #height: 30
         Button:
             text: 'Selected'
         Button:
@@ -169,10 +166,25 @@
                 text: 'Map-Gen!'
         
 <ViewMaps>
-    cols: 2
-    
-    Label:
-        text: 'Map Name'
+    orientation: 'vertical'
+
     Button:
+        pos_hint: {"x":0.5}
+        size_hint_x: 0.5
+        size_hint_y: 0.8
         text: 'Load'
+            
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Map One'
+            Label:
+                text: 'Map Two'
+            Label:
+                text: 'Oakvale'
+        BoxLayout:
+            Label:
+                text: 'The map preview will be here.'
          

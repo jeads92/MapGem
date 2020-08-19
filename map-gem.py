@@ -63,7 +63,7 @@ class EditMap(GridLayout):
 class Options(GridLayout):
     pass
 
-class ViewMaps(GridLayout):
+class ViewMaps(BoxLayout):
     pass
 
 
