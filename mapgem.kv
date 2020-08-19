@@ -1,10 +1,12 @@
 <EntryScreen>
     cols: 1
+    padding: 100
     
+       
     Button:
         text: 'New User'
         on_press: root.to_newuser()
-        
+
     Button:
         text: 'Login'
         on_press: root.to_userlogin()
@@ -14,69 +16,96 @@
         on_press:
             #root.manager.transition.direction = 'right'
             root.to_mainmenu()
+            
         
 
 <UserLogin>
+    orientation: 'vertical'
     name1: name
     password1: password
-    cols: 2
-
-    Label:
-        text: 'Login to Account'
-
-    Label:
-        text: ''
     
-    Label:
-        text: 'Username'
+    BoxLayout:
+        Label:
+            text: 'Login to Account'
 
-    TextInput:
-        id: name
-        multiline: False
-        
-    Label:
-        text: 'Password'
 
-    TextInput:
-        id: password
-        multiline: False
-        password: True
+    GridLayout:
+        size_hint_x: 0.5
+        pos_hint: {"x":0.25}
+        #pos_hint: {'center_x': root.x, 'center_y':root.y }
+        col: 2
+        rows: 2
+        Label:
+            text: 'Username'
+    
+        TextInput:
+            id: name
+            multiline: False
+            
+        Label:
+            text: 'Password'
+    
+        TextInput:
+            id: password
+            multiline: False
+            password: True
         
-    Button:
-        text: 'Submit'
-        on_press: root.to_mainscreen()
-    Button:
-        text: 'Go back to Entry Screen'
-        on_press: root.to_entryscreen()
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {"x":0.25}
+        size_hint_y: 0.5
+        
+        Button:
+            size_hint_x: 0.5
+            text: 'Submit'
+            on_press: root.to_mainscreen()
+        Button:
+            size_hint_x: 0.5
+            text: 'Go back to Entry Screen'
+            on_press: root.to_entryscreen()
 
 
 <NewAccount>
-    cols: 2
-    Label:
-        text: 'Create New Account'
-    Label:
-        text: ''
-        
-    Label:
-        text: 'Username'
+    orientation: 'vertical'
 
-    TextInput:
-        multiline: False
+    BoxLayout:
+        Label:
+            text: 'Create New Account'
+
+    GridLayout:
+        size_hint_x: 0.5
+        pos_hint: {"x":0.25}
+        #pos_hint: {'center_x': root.x, 'center_y':root.y }
+        col: 2
+        rows: 2
+        Label:
+            text: 'Username'
     
-    Label:
-        text: 'Password'
-
-    TextInput:
-        multiline: False
-        password: True
-
-    Button:
-        text: 'Submit'
-        on_press: root.to_mainmenu()
+        TextInput:
+            multiline: False
+        
+        Label:
+            text: 'Password'
+    
+        TextInput:
+            multiline: False
+            password: True
+            
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {"x":0.25}
+        size_hint_y: 0.5
+        
+        
+        Button:
+            size_hint_x: 0.5
+            text: 'Submit'
+            on_press: root.to_mainmenu()
     
 
 <MainScreen>
     cols: 1
+    padding: 100
 
     Button:
         text: 'Create New Maps'
@@ -92,7 +121,7 @@
         
 <Options>
     cols: 1
-
+    
     
     Label:
         text: 'Options Screen'
@@ -107,23 +136,37 @@
         text: 'View Tiles'
     
 <EditMap>
-    cols: 5
-    rows: 5
+    cols: 1
     
-    Label:
-        text: 'Selected'
-        
-    Button:
-        text: 'Plants'
-        
-    Button:
-        text: 'Construction'
-        
-    Button:
-        text: 'Landscape'
-        
-    Button:
-        text: 'Blank'
+    BoxLayout:
+        size_hint_y: 0.2
+        #height: 30
+        Button:
+            text: 'Selected'
+        Button:
+            text: 'Plants'
+        Button:
+            text: 'Contruction'
+        Button:
+            text: 'Landscape'
+            
+    BoxLayout:
+        Label:
+            text: 'This will be the map!'
+            
+        BoxLayout:
+            size_hint_x: 0.2
+            orientation: 'vertical'
+            Button:
+                text: ''
+            Button:
+                text: ''
+            Button:
+                text: ''
+            Button:
+                text: 'Load Map'
+            Button
+                text: 'Map-Gen!'
         
 <ViewMaps>
     cols: 2

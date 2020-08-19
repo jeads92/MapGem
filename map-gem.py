@@ -1,6 +1,7 @@
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
@@ -25,7 +26,7 @@ class EntryScreen(GridLayout):
         main_app.screen_manager.current = 'Main Screen'
 
 
-class UserLogin(GridLayout):
+class UserLogin(BoxLayout):
     name1 = ObjectProperty(None)
     password1 = ObjectProperty(None)
 
@@ -39,7 +40,7 @@ class UserLogin(GridLayout):
         main_app.screen_manager.current = 'Main Screen'
 
 
-class NewAccount(GridLayout):
+class NewAccount(BoxLayout):
     def to_mainmenu(self):
         main_app.screen_manager.current = 'Main Screen'
 
