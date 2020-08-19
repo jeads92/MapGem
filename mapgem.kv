@@ -118,21 +118,39 @@
         on_press: root.to_options()
         
 <Options>
-    cols: 1
-    
-    
+    orientation: 'vertical'
     Label:
+        pos_hint: {'x': 0}
+        size_hint_x: 0.5
         text: 'Options Screen'
-    
-    Button:
-        text: 'Upload Tiles'
         
-    Button:
-        text: 'Create Tiles'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.5
+        pos_hint: {'x': 0}
         
-    Button:
-        text: 'View Tiles'
-    
+        Label:
+            text: 'Tiles'
+        Button:
+            text: 'Upload Tiles'
+            #background_color: 0, 0, 0, 0
+                 
+        Button:
+            text: 'Create Tiles'
+            #background_color: 0, 0, 0, 0
+        Button:
+            text: 'View Tiles'
+            #background_color: 0, 0, 0, 0
+            
+        Label:
+            text: 'Audio'
+        Button:
+            text: 'Turn off audio samples'
+        Button:
+            text: 'Turn off ost'
+        Button:
+            text: 'Insert audio'
+        
 <EditMap>
     cols: 1
     
@@ -187,4 +205,7 @@
         BoxLayout:
             Label:
                 text: 'The map preview will be here.'
+    Button:
+        text: 'Go back to Main Screen'
+        on_press: app.entry_screen.to_mainmenu()
          

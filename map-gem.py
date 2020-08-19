@@ -11,22 +11,25 @@ kivy.require('1.11.1')
 
 def screen_changer(instance):
     ''' Switches to the screen based off of the screen name.'''
-    pass
 
 class EntryScreen(GridLayout):
 
     def to_newuser(self):
+        ''' Switches to the New Account Screen. '''
         main_app.screen_manager.current = 'New Account'
         # yes
 
     def to_userlogin(self):
+        ''' Switches to the login screen. '''
         main_app.screen_manager.current = 'User Login'
 
     def to_mainmenu(self):
+        ''' Switches to the main screen. '''
         main_app.screen_manager.current = 'Main Screen'
 
 
 class UserLogin(BoxLayout):
+    ''' Allows the user to login to their account and load their data. '''
     name1 = ObjectProperty(None)
     password1 = ObjectProperty(None)
 
@@ -60,10 +63,12 @@ class EditMap(GridLayout):
 
 
 
-class Options(GridLayout):
+class Options(BoxLayout):
+    ''' This screen will have all options the user can edit. '''
     pass
 
 class ViewMaps(BoxLayout):
+    ''' This screen allows the user to view, edit, and load their maps. '''
     pass
 
 
