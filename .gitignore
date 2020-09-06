@@ -1,2 +1,4 @@
 tests
 sudomapgen.py
+__pycache__/
+sudomapgen_2.py
