@@ -9,8 +9,10 @@ import tile_crusher
 
 kivy.require('1.11.1')
 
+
 def screen_changer(instance):
     ''' Switches to the screen based off of the screen name.'''
+
 
 class EntryScreen(GridLayout):
 
@@ -51,21 +53,22 @@ class NewAccount(BoxLayout):
 class MainScreen(GridLayout):
     def to_options(self):
         main_app.screen_manager.current = 'Options'
-        
+
     def to_editmap(self):
         main_app.screen_manager.current = 'Edit Map'
-        
+
     def to_viewmaps(self):
         main_app.screen_manager.current = 'View Maps'
-        
+
+
 class EditMap(GridLayout):
     pass
-
 
 
 class Options(BoxLayout):
     ''' This screen will have all options the user can edit. '''
     pass
+
 
 class ViewMaps(BoxLayout):
     ''' This screen allows the user to view, edit, and load their maps. '''
@@ -96,17 +99,17 @@ class MapGem(App):
         screen = Screen(name='Main Screen')
         screen.add_widget(self.mainscreen)
         self.screen_manager.add_widget(screen)
-        
+
         self.options = Options()
         screen = Screen(name='Options')
         screen.add_widget(self.options)
         self.screen_manager.add_widget(screen)
-        
+
         self.edit_map = EditMap()
         screen = Screen(name='Edit Map')
         screen.add_widget(self.edit_map)
         self.screen_manager.add_widget(screen)
-        
+
         self.view_maps = ViewMaps()
         screen = Screen(name='View Maps')
         screen.add_widget(self.view_maps)
