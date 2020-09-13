@@ -18,19 +18,20 @@ class MapGenerator():
                         3: {'name': 'houses', 'icon': '#'},
                         4: {'name': 'snow', 'icon': '*'}}
 
-    def map_initialize(self, length, width):
+    def map_initialize(self, height, width):
         ''' Generates a list of lists, that represents a grid, that
         will act as a base map.
         length is the number of nested lists (rows).
         Width is the number of tiles in every nested list (columns).
         '''
-        self.length = length
+        self.height = height
         self.width = width
+        self.grid = []
         # Selects a random tile in the self.symbols dictionary.
         icon_random = random.randint(0, len(self.symbols)-1)
-        for number in range(self.width):
+        for number in range(self.height):
             self.grid.append([self.symbols[icon_random]['icon']
-                              for num in range(self.length)])
+                              for num in range(self.width)])
 
     def alive_dead_tiles(self):
         '''
@@ -66,6 +67,17 @@ class MapGenerator():
             for tile in row:
                 line += str(tile)
             print(line)
+
+    def map_string(self):
+        '''
+        Returns a string of the map so it can be converted to a label in the kv file.
+        '''
+        map_string = ''
+        for row in self.grid:
+            for col in row:
+                map_string += col
+            map_string += '\n'
+        return map_string
 
     def biased_run(self):
         '''
@@ -189,3 +201,14 @@ class MapGenerator():
             if row_index in range(y_insert, last_row_index + 1):
                 self.grid[row_index][x_insert:last_col_index] = biome[count][:]
                 count += 1
+
+    def gen_fullmap(self, y_high = 5, x_long = 15):
+        '''
+        gen_fullmap runs all of the methods needed to create a new map.
+        '''
+        self.map_initialize(y_high, x_long)
+        self.alive_dead_tiles()
+        self.tile_conversion()
+        self.biased_run()
+        self.biome_injector()
+        

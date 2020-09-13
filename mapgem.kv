@@ -150,10 +150,10 @@
             text: 'Turn off ost'
         Button:
             text: 'Insert audio'
-        
+
 <EditMap>
     cols: 1
-    
+
     BoxLayout:
         size_hint_y: 0.2
         Button:
@@ -167,7 +167,8 @@
             
     BoxLayout:
         Label:
-            text: 'This will be the map!'
+            id: test_label
+            text: 'Press Map-Gen to update the map.'
             
         BoxLayout:
             size_hint_x: 0.2
@@ -180,9 +181,12 @@
                 text: ''
             Button:
                 text: 'Load Map'
-            Button
+            Button:
                 text: 'Map-Gen!'
-        
+                on_press: root.map_label.gen_fullmap()
+                on_release: test_label.text = root.map_label.map_string()
+
+
 <ViewMaps>
     orientation: 'vertical'
 
@@ -191,7 +195,7 @@
         size_hint_x: 0.5
         size_hint_y: 0.8
         text: 'Load'
-            
+
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -208,4 +212,3 @@
     Button:
         text: 'Go back to Main Screen'
         on_press: app.entry_screen.to_mainmenu()
-         

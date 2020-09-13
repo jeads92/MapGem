@@ -5,6 +5,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
+from kivy.properties import StringProperty
 import tile_crusher
 
 kivy.require('1.11.1')
@@ -62,7 +63,10 @@ class MainScreen(GridLayout):
 
 
 class EditMap(GridLayout):
-    pass
+    map_label = tile_crusher.MapGenerator()
+    map_label.gen_fullmap()
+    
+    
 
 
 class Options(BoxLayout):
@@ -114,6 +118,7 @@ class MapGem(App):
         screen = Screen(name='View Maps')
         screen.add_widget(self.view_maps)
         self.screen_manager.add_widget(screen)
+
 
         return self.screen_manager
 
