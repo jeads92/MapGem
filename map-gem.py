@@ -15,7 +15,7 @@ def screen_changer(instance):
     ''' Switches to the screen based off of the screen name.'''
 
 
-class EntryScreen(GridLayout):
+class EntryScreen(BoxLayout):
 
     def to_newuser(self):
         ''' Switches to the New Account Screen. '''
@@ -29,6 +29,10 @@ class EntryScreen(GridLayout):
     def to_mainmenu(self):
         ''' Switches to the main screen. '''
         main_app.screen_manager.current = 'Main Screen'
+        
+    def to_tester(self):
+        '''switch to testing screen'''
+        main_app.screen_manager.current = 'Testing'
 
 
 class UserLogin(BoxLayout):
@@ -51,7 +55,7 @@ class NewAccount(BoxLayout):
         main_app.screen_manager.current = 'Main Screen'
 
 
-class MainScreen(GridLayout):
+class MainScreen(BoxLayout):
     def to_options(self):
         main_app.screen_manager.current = 'Options'
 
@@ -65,8 +69,6 @@ class MainScreen(GridLayout):
 class EditMap(GridLayout):
     map_label = tile_crusher.MapGenerator()
     map_label.gen_fullmap()
-    
-    
 
 
 class Options(BoxLayout):
@@ -118,7 +120,6 @@ class MapGem(App):
         screen = Screen(name='View Maps')
         screen.add_widget(self.view_maps)
         self.screen_manager.add_widget(screen)
-
 
         return self.screen_manager
 
