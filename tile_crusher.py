@@ -8,7 +8,7 @@ class MapGenerator():
     houses, land, water, snow, and other elements.
     '''
     def __init__(self):
-        self.length = 0
+        self.height = 0
         self.width = 0
         self.grid = []
         # Need to add island, continents, ocean, etc., tiles in the symbols
