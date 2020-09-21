@@ -70,7 +70,8 @@ class MapGenerator():
 
     def map_string(self):
         '''
-        Returns a string of the map so it can be converted to a label in the kv file.
+        Returns a string of the map so it can be
+        converted to a label in the kv file.
         '''
         map_string = ''
         for row in self.grid:
@@ -202,7 +203,7 @@ class MapGenerator():
                 self.grid[row_index][x_insert:last_col_index] = biome[count][:]
                 count += 1
 
-    def gen_fullmap(self, y_high = 5, x_long = 5): # standard was 5 x 15
+    def gen_fullmap(self, y_high=5, x_long=5):
         '''
         gen_fullmap runs all of the methods needed to create a new map.
         '''
@@ -211,4 +212,3 @@ class MapGenerator():
         self.tile_conversion()
         self.biased_run()
         self.biome_injector()
-        
