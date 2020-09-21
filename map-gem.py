@@ -10,6 +10,7 @@ from kivy.properties import StringProperty
 import tile_crusher
 from kivy.utils import get_color_from_hex
 from kivy.graphics import Color, Rectangle
+from kivy.properties import ListProperty
 
 
 kivy.require('1.11.1')
@@ -42,39 +43,38 @@ class EntryScreen(BoxLayout):
     def to_tester(self):
         '''switch to testing screen'''
         main_app.screen_manager.current = 'StrMap'
-
+        
+        
+#------------------------------------------------------------------------------
+        
+class MyLabel(Label):
+    bg_color = ListProperty([0,0,0,1])
 
 class StrMap(BoxLayout):
     ''' testing converting strings to maps.'''
 
-    simples = {'^': {'color': '#98CE00'},
-               '_': {'color': '#001011'},
-               '~': {'color': '#6CCFF6'},
-               '*': {'color': '#8EB8E5'},
-               '#': {'color': '#757780'}}
+    tile_colors = {'^': [134/255, 205/255,130/255, 1],
+               '_': [212/255, 175/255, 185/255, 1],
+               '~': [82/255, 178/255, 207/255, 1],
+               '*': [209/255, 207/255, 226,255, 1],
+               '#': [156/255, 173/255, 206/255, 1]}
 
     map_obj = tile_crusher.MapGenerator()
-    map_obj.gen_fullmap()
-
-    grid_layout = GridLayout(cols = 5)
-
+    map_obj.gen_fullmap(10,10)
 
     def genten(self):
-        grider = [['^', '~', '^', '~', '_'], ['*', '~', '*', '_', '_']]
-
-        if self.grid_layout in self.children:
-            self.grid_layout.clear_widgets()
-        else:
-            self.add_widget(self.grid_layout)
+        self.map_obj.gen_fullmap(10,10)
+        self.map_layout = self.ids.grid
+        self.map_layout.clear_widgets()
         
-        for row in grider:
+        for row in self.map_obj.grid:
             for tile in row:
-                self.new_label = Label(text = 'Test')
-                self.new_label.canvas.before.add(Color(1,0,0,1))
-                self.new_label.canvas.before.add(Rectangle(pos=self.pos))
-                self.grid_layout.add_widget(self.new_label)
+                self.new_label = MyLabel(bg_color=self.tile_colors[tile])
+                self.map_layout.add_widget(self.new_label)
 
-
+#------------------------------------------------------------------------------
+                
+                
 class UserLogin(BoxLayout):
     ''' Allows the user to login to their account and load their data. '''
     name1 = ObjectProperty(None)

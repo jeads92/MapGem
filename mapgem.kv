@@ -82,7 +82,19 @@
         on_release: root.genten()
         
     GridLayout:
-        cols: 5
+        id: grid
+        cols: root.map_obj.width
+        #padding: 4
+        #spacing: 4
+        
+<MyLabel>:
+    color: 0,0,0,1
+    canvas.before:
+        Color:
+            rgba: self.bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
         
 
 <UserLogin>
