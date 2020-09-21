@@ -1,5 +1,6 @@
 import kivy
 from kivy.app import App
+from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager
@@ -7,12 +8,20 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty
 import tile_crusher
+from kivy.utils import get_color_from_hex
+from kivy.graphics import Color, Rectangle
+
 
 kivy.require('1.11.1')
 
 
 def screen_changer(instance):
     ''' Switches to the screen based off of the screen name.'''
+    pass
+
+def label_maker(instance):
+    '''Creates a label for the kivy GUI'''
+    pass
 
 
 class EntryScreen(BoxLayout):
@@ -32,7 +41,38 @@ class EntryScreen(BoxLayout):
         
     def to_tester(self):
         '''switch to testing screen'''
-        main_app.screen_manager.current = 'Testing'
+        main_app.screen_manager.current = 'StrMap'
+
+
+class StrMap(BoxLayout):
+    ''' testing converting strings to maps.'''
+
+    simples = {'^': {'color': '#98CE00'},
+               '_': {'color': '#001011'},
+               '~': {'color': '#6CCFF6'},
+               '*': {'color': '#8EB8E5'},
+               '#': {'color': '#757780'}}
+
+    map_obj = tile_crusher.MapGenerator()
+    map_obj.gen_fullmap()
+
+    grid_layout = GridLayout(cols = 5)
+
+
+    def genten(self):
+        grider = [['^', '~', '^', '~', '_'], ['*', '~', '*', '_', '_']]
+
+        if self.grid_layout in self.children:
+            self.grid_layout.clear_widgets()
+        else:
+            self.add_widget(self.grid_layout)
+        
+        for row in grider:
+            for tile in row:
+                self.new_label = Label(text = 'Test')
+                self.new_label.canvas.before.add(Color(1,0,0,1))
+                self.new_label.canvas.before.add(Rectangle(pos=self.pos))
+                self.grid_layout.add_widget(self.new_label)
 
 
 class UserLogin(BoxLayout):
@@ -119,6 +159,11 @@ class MapGem(App):
         self.view_maps = ViewMaps()
         screen = Screen(name='View Maps')
         screen.add_widget(self.view_maps)
+        self.screen_manager.add_widget(screen)
+        
+        self.str_map = StrMap()
+        screen = Screen(name='StrMap')
+        screen.add_widget(self.str_map)
         self.screen_manager.add_widget(screen)
 
         return self.screen_manager

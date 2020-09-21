@@ -202,7 +202,7 @@ class MapGenerator():
                 self.grid[row_index][x_insert:last_col_index] = biome[count][:]
                 count += 1
 
-    def gen_fullmap(self, y_high = 5, x_long = 15):
+    def gen_fullmap(self, y_high = 5, x_long = 5): # standard was 5 x 15
         '''
         gen_fullmap runs all of the methods needed to create a new map.
         '''

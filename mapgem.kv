@@ -1,3 +1,5 @@
+#:import hex kivy.utils.get_color_from_hex
+
 <GridLayout>
     canvas.before:
         Color:
@@ -62,42 +64,73 @@
             text: 'Skip Login'
             on_press:
                 root.to_mainmenu()
+                
+        Button:
+            text: 'Testing'
+            on_press:
+                root.to_tester()
 
+<StrMap>
+    orientation: 'vertical'
+
+    Label:
+        text: 'welcome to the testing screen.'
+        size_hint_y: 0.1
+
+    Button:
+        text: 'Generate 5 Labels form a python binding.'
+        on_release: root.genten()
+        
+    GridLayout:
+        cols: 5
+        
 
 <UserLogin>
     orientation: 'vertical'
     name1: name
     password1: password
     
+    Label:
+        pos_hint: {'x': 0}
+        size_hint_y: 0.1
+        text: 'Login Screen'
+        color: 1, 1, 1, 1
+        canvas.before:
+            Color:
+                rgba: 0,0,0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
     BoxLayout:
-        Label:
-            text: 'Login to Account'
-
-
-    GridLayout:
         size_hint_x: 0.5
-        pos_hint: {"x":0.25}
-        col: 2
-        rows: 2
-        Label:
-            text: 'Username'
-    
-        TextInput:
-            id: name
-            multiline: False
-            
-        Label:
-            text: 'Password'
-    
-        TextInput:
-            id: password
-            multiline: False
-            password: True
+        size_hint_y: 0.2
+        pos_hint: {"x":0}
+        orientation: 'vertical'
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Username'
+        
+            TextInput:
+                id: name
+                multiline: False
+                
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Password'
+        
+            TextInput:
+                id: password
+                multiline: False
+                password: True
         
     BoxLayout:
         orientation: 'vertical'
-        pos_hint: {"x":0.25}
-        size_hint_y: 0.5
+        pos_hint: {"x":0}
+        size_hint_y: 0.1
         
         Button:
             size_hint_x: 0.5
@@ -112,33 +145,45 @@
 <NewAccount>
     orientation: 'vertical'
 
-    BoxLayout:
-        Label:
-            text: 'Create New Account'
+    Label:
+        pos_hint: {'x': 0}
+        size_hint_y: 0.1
+        text: 'Create New Account'
+        color: 1, 1, 1, 1
+        canvas.before:
+            Color:
+                rgba: 0,0,0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
-    GridLayout:
+    BoxLayout:
         size_hint_x: 0.5
-        pos_hint: {"x":0.25}
-        col: 2
-        rows: 2
-        Label:
-            text: 'Username'
+        size_hint_y: 0.2
+        pos_hint: {"x":0}
+        orientation: 'vertical'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Username'
     
-        TextInput:
-            multiline: False
+            TextInput:
+                multiline: False
         
-        Label:
-            text: 'Password'
-    
-        TextInput:
-            multiline: False
-            password: True
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Password'
+        
+            TextInput:
+                multiline: False
+                password: True
             
     BoxLayout:
         orientation: 'vertical'
-        pos_hint: {"x":0.25}
-        size_hint_y: 0.5
-        
+        pos_hint: {"x":0}
+        size_hint_y: 0.1
         
         Button:
             size_hint_x: 0.5
