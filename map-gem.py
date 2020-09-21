@@ -46,32 +46,9 @@ class EntryScreen(BoxLayout):
         
         
 #------------------------------------------------------------------------------
-        
-class MyLabel(Label):
-    bg_color = ListProperty([0,0,0,1])
+    
 
-class StrMap(BoxLayout):
-    ''' testing converting strings to maps.'''
 
-    tile_colors = {'^': [134/255, 205/255,130/255, 1],
-               '_': [162/255, 73/255, 54/255, 1],
-               '~': [82/255, 178/255, 207/255, 1],
-               '*': [241/255, 227/255, 243/255, 1],
-               '#': [156/255, 173/255, 206/255, 1],
-               '@': [0, 0, 0, 1]}
-
-    map_obj = tile_crusher.MapGenerator()
-    map_obj.gen_fullmap(10,10)
-
-    def genten(self):
-        self.map_obj.gen_fullmap(10,10)
-        self.map_layout = self.ids.grid
-        self.map_layout.clear_widgets()
-        
-        for row in self.map_obj.grid:
-            for tile in row:
-                self.new_label = MyLabel(bg_color=self.tile_colors[tile])
-                self.map_layout.add_widget(self.new_label)
 
 #------------------------------------------------------------------------------
                 
@@ -106,11 +83,57 @@ class MainScreen(BoxLayout):
     def to_viewmaps(self):
         main_app.screen_manager.current = 'View Maps'
 
+#------------------------------------------------------------------------------
+class MyLabel(Label):
+    bg_color = ListProperty([0,0,0,1])
+    
+
+class StrMap(BoxLayout):
+    ''' testing converting strings to maps.'''
+
+    tile_colors = {'^': [134/255, 205/255,130/255, 1],
+               '_': [162/255, 73/255, 54/255, 1],
+               '~': [82/255, 178/255, 207/255, 1],
+               '*': [241/255, 227/255, 243/255, 1],
+               '#': [156/255, 173/255, 206/255, 1],
+               '@': [0, 0, 0, 1]}
+
+    map_obj = tile_crusher.MapGenerator()
+    map_obj.gen_fullmap(10,10)
+
+    def genten(self):
+        self.map_obj.gen_fullmap(10,10)
+        self.map_layout = self.ids.grid
+        self.map_layout.clear_widgets()
+        
+        for row in self.map_obj.grid:
+            for tile in row:
+                self.new_label = MyLabel(bg_color=self.tile_colors[tile])
+                self.map_layout.add_widget(self.new_label)
+
 
 class EditMap(GridLayout):
-    map_label = tile_crusher.MapGenerator()
-    map_label.gen_fullmap()
+    tile_colors = {'^': [134/255, 205/255,130/255, 1],
+               '_': [162/255, 73/255, 54/255, 1],
+               '~': [82/255, 178/255, 207/255, 1],
+               '*': [241/255, 227/255, 243/255, 1],
+               '#': [156/255, 173/255, 206/255, 1],
+               '@': [0, 0, 0, 1]}  
 
+    map_object = tile_crusher.MapGenerator()
+    map_object.gen_fullmap(10,10)
+    
+    def generate_map_tiles(self):
+        self.map_object.gen_fullmap(10,10)
+        self.map_layout = self.ids.grid
+        self.map_layout.clear_widgets()
+        
+        for row in self.map_object.grid:
+            for tile in row:
+                self.new_label = MyLabel(bg_color=self.tile_colors[tile])
+                self.map_layout.add_widget(self.new_label)
+
+#------------------------------------------------------------------------------
 
 class Options(BoxLayout):
     ''' This screen will have all options the user can edit. '''

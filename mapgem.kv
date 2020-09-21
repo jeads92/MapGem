@@ -70,29 +70,7 @@
             on_press:
                 root.to_tester()
 
-<StrMap>
-    orientation: 'vertical'
 
-    Label:
-        text: 'welcome to the testing screen.'
-        size_hint_y: 0.1
-
-    Button:
-        text: 'Generate 5 Labels form a python binding.'
-        on_release: root.genten()
-        
-    GridLayout:
-        id: grid
-        cols: root.map_obj.width
-        
-<MyLabel>:
-    color: 0,0,0,1
-    canvas.before:
-        Color:
-            rgba: self.bg_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
         
 
 <UserLogin>
@@ -271,6 +249,30 @@
         Button:
             text: 'Insert audio'
 
+<StrMap>
+    orientation: 'vertical'
+
+    Label:
+        text: 'welcome to the testing screen.'
+        size_hint_y: 0.1
+
+    Button:
+        text: 'Generate 5 Labels form a python binding.'
+        on_release: root.genten()
+        
+    GridLayout:
+        id: grid
+        cols: root.map_obj.width
+        
+<MyLabel>:
+    color: 0,0,0,1
+    canvas.before:
+        Color:
+            rgba: self.bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <EditMap>
     cols: 1
 
@@ -286,9 +288,10 @@
             text: 'Landscape'
             
     BoxLayout:
-        Label:
-            id: test_label
-            text: 'Press Map-Gen to update the map.'
+        GridLayout:
+            id: grid
+            cols: root.map_object.width
+            
             
         BoxLayout:
             size_hint_x: 0.2
@@ -303,8 +306,7 @@
                 text: 'Load Map'
             Button:
                 text: 'Map-Gen!'
-                on_press: root.map_label.gen_fullmap()
-                on_release: test_label.text = root.map_label.map_string()
+                on_release: root.generate_map_tiles()
 
 
 <ViewMaps>
