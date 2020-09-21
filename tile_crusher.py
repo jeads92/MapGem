@@ -4,14 +4,13 @@ import random
 
 class MapGenerator():
     '''
-    MapGenerator creates a grid and fills them with symbols that represent
+    MapGenerator creates a grid and fills it with symbols that represent
     houses, land, water, snow, and other elements.
     '''
     def __init__(self):
         self.height = 0
         self.width = 0
         self.grid = []
-        # Need to add island, continents, ocean, etc., tiles in the symbols
         self.symbols = {0: {'name': 'tree', 'icon': '^'},
                         1: {'name': 'water', 'icon': '~'},
                         2: {'name': 'land', 'icon': '_'},
@@ -19,9 +18,9 @@ class MapGenerator():
                         4: {'name': 'snow', 'icon': '*'}}
 
     def map_initialize(self, height, width):
-        ''' Generates a list of lists, that represents a grid, that
-        will act as a base map.
-        length is the number of nested lists (rows).
+        ''' map_initialize generates a list of lists, that represents a grid,
+        that will act as a base map.
+        height is the number of nested lists (rows).
         Width is the number of tiles in every nested list (columns).
         '''
         self.height = height
@@ -67,18 +66,11 @@ class MapGenerator():
             for tile in row:
                 line += str(tile)
             print(line)
-
-    def map_string(self):
+            
+    def return_neighbors(self):
         '''
-        Returns a string of the map so it can be
-        converted to a label in the kv file.
+        return neighbors takes each 
         '''
-        map_string = ''
-        for row in self.grid:
-            for col in row:
-                map_string += col
-            map_string += '\n'
-        return map_string
 
     def biased_run(self):
         '''
@@ -108,7 +100,7 @@ class MapGenerator():
                     # Selects the neighbors of the tile.
                     if row_index == len(self.grid) - 1:
                         bot_row = []
-                        # bottom row tiles do not have a bottom row.
+                        # bottom row tiles have an empty bottom row.
                     else:
                         bot_row = self.grid[row_index + 1][min_value:max_value
                                                            + 1]
@@ -133,7 +125,7 @@ class MapGenerator():
                     bucket = ['_']
                     unused_tiles = ['_']
 
-                    # The bucket is used to turn the a dead tile into a map
+                    # The bucket is used to turn the dead tile into a map
                     # tile based off of its neighbors. A random integer will
                     # be generated to index the bucket. The more a tile
                     # appears in the bucket, the more likely it will be chosen
