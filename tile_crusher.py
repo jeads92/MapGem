@@ -67,10 +67,15 @@ class MapGenerator():
                 line += str(tile)
             print(line)
             
-    def return_neighbors(self):
+    def return_neighbors(self, the_tile):
         '''
-        return neighbors takes each 
+        return neighbors takes a tile and
+        uses slices to find the 8-D neighbors
         '''
+
+
+        
+        
 
     def biased_run(self):
         '''

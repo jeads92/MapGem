@@ -36,7 +36,7 @@
     Label:
         pos_hint: {'x': 0}
         size_hint_y: 0.1
-        text: 'User Selection'
+        text: 'Welcome to Map Generator!'
         color: 1, 1, 1, 1
         canvas.before:
             Color:
@@ -51,195 +51,8 @@
         pos_hint: {'x': 0}
 
         Button:
-            text: 'New User'
-            on_press: root.to_newuser()
-
-        Button:
-            text: 'Login'
-            on_press: root.to_userlogin()
-
-        Button:
-            text: 'Skip Login'
-            on_press:
-                root.to_mainmenu()
-
-
-<UserLogin>
-    orientation: 'vertical'
-    name1: name
-    password1: password
-
-    Label:
-        pos_hint: {'x': 0}
-        size_hint_y: 0.1
-        text: 'Login Screen'
-        color: 1, 1, 1, 1
-        canvas.before:
-            Color:
-                rgba: 0, 0, 0, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-    BoxLayout:
-        size_hint_x: 0.5
-        size_hint_y: 0.2
-        pos_hint: {"x": 0}
-        orientation: 'vertical'
-
-        BoxLayout:
-            orientation: 'horizontal'
-            Label:
-                text: 'Username'
-
-            TextInput:
-                id: name
-                multiline: False
-
-        BoxLayout:
-            orientation: 'horizontal'
-            Label:
-                text: 'Password'
-
-            TextInput:
-                id: password
-                multiline: False
-                password: True
-
-    BoxLayout:
-        orientation: 'vertical'
-        pos_hint: {"x": 0}
-        size_hint_y: 0.1
-
-        Button:
-            size_hint_x: 0.5
-            text: 'Submit'
-            on_press: root.to_mainscreen()
-        Button:
-            size_hint_x: 0.5
-            text: 'Go back to Entry Screen'
-            on_press: root.to_entryscreen()
-
-
-<NewAccount>
-    orientation: 'vertical'
-
-    Label:
-        pos_hint: {'x': 0}
-        size_hint_y: 0.1
-        text: 'Create New Account'
-        color: 1, 1, 1, 1
-        canvas.before:
-            Color:
-                rgba: 0, 0, 0, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-    BoxLayout:
-        size_hint_x: 0.5
-        size_hint_y: 0.2
-        pos_hint: {"x": 0}
-        orientation: 'vertical'
-
-        BoxLayout:
-            orientation: 'horizontal'
-            Label:
-                text: 'Username'
-
-            TextInput:
-                multiline: False
-
-        BoxLayout:
-            orientation: 'horizontal'
-            Label:
-                text: 'Password'
-
-            TextInput:
-                multiline: False
-                password: True
-
-    BoxLayout:
-        orientation: 'vertical'
-        pos_hint: {"x": 0}
-        size_hint_y: 0.1
-
-        Button:
-            size_hint_x: 0.5
-            text: 'Submit'
-            on_press: root.to_mainmenu()
-
-
-<MainScreen>
-    orientation: 'vertical'
-
-    Label:
-        pos_hint: {'x': 0}
-        size_hint_y: 0.1
-        text: 'Main Menu'
-        color: 1, 1, 1, 1
-        canvas.before:
-            Color:
-                rgba: 0, 0, 0, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-    BoxLayout:
-        orientation: 'vertical'
-        size_hint_x: 0.5
-        pos_hint: {'x': 0}
-
-        Button:
-            text: 'Create New Maps'
+            text: 'Create Map!'
             on_press: root.to_editmap()
-
-        Button:
-            text: 'View Maps'
-            on_press: root.to_viewmaps()
-
-        Button:
-            text: 'Options'
-            on_press: root.to_options()
-
-<Options>
-    orientation: 'vertical'
-
-    Label:
-        pos_hint: {'x': 0}
-        size_hint_y: 0.1
-        text: 'Options Screen'
-        color: 1, 1, 1, 1
-        canvas.before:
-            Color:
-                rgba: 0, 0, 0, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-    BoxLayout:
-        orientation: 'vertical'
-        size_hint_x: 0.5
-        pos_hint: {'x': 0}
-
-        Label:
-            text: 'Tiles'
-        Button:
-            text: 'Upload Tiles'
-
-        Button:
-            text: 'Create Tiles'
-        Button:
-            text: 'View Tiles'
-
-        Label:
-            text: 'Audio'
-        Button:
-            text: 'Turn off audio samples'
-        Button:
-            text: 'Turn off ost'
-        Button:
-            text: 'Insert audio'
-
 
 <MyLabel>:
     color: 0, 0, 0, 1
@@ -256,13 +69,10 @@
     BoxLayout:
         size_hint_y: 0.2
         Button:
-            text: 'Selected'
-        Button:
-            text: 'Plants'
-        Button:
-            text: 'Contruction'
-        Button:
-            text: 'Landscape'
+            text: 'Map-Gen!'
+            on_release: root.generate_map_tiles()
+            
+
 
     BoxLayout:
         GridLayout:
@@ -272,41 +82,5 @@
         BoxLayout:
             size_hint_x: 0.2
             orientation: 'vertical'
-            Button:
+            Label:
                 text: ''
-            Button:
-                text: ''
-            Button:
-                text: ''
-            Button:
-                text: 'Load Map'
-            Button:
-                text: 'Map-Gen!'
-                on_release: root.generate_map_tiles()
-
-
-<ViewMaps>
-    orientation: 'vertical'
-
-    Button:
-        pos_hint: {"x": 0.5}
-        size_hint_x: 0.5
-        size_hint_y: 0.8
-        text: 'Load'
-
-    BoxLayout:
-        orientation: 'horizontal'
-        BoxLayout:
-            orientation: 'vertical'
-            Label:
-                text: 'Map One'
-            Label:
-                text: 'Map Two'
-            Label:
-                text: 'Oakvale'
-        BoxLayout:
-            Label:
-                text: 'The map preview will be here.'
-    Button:
-        text: 'Go back to Main Screen'
-        on_press: app.entry_screen.to_mainmenu()
