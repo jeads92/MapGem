@@ -5,12 +5,12 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ObjectProperty
 import tile_crusher
 from kivy.properties import ListProperty
 
 
 kivy.require('1.11.1')
+
 
 class EntryScreen(BoxLayout):
     '''
@@ -19,6 +19,7 @@ class EntryScreen(BoxLayout):
     def to_editmap(self):
         '''Switch to the map generating portion. '''
         main_app.screen_manager.current = 'Edit Map'
+
 
 class MyLabel(Label):
     '''
@@ -69,6 +70,7 @@ class MapGem(App):
         self.screen_manager.add_widget(screen)
 
         return self.screen_manager
+
 
 if __name__ == '__main__':
     main_app = MapGem()

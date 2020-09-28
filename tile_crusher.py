@@ -66,24 +66,15 @@ class MapGenerator():
             for tile in row:
                 line += str(tile)
             print(line)
-            
+
     def return_neighbors(self, the_tile):
         '''
         return neighbors takes a tile and
         uses slices to find the 8-D neighbors
         '''
 
-
-        
-        
-
-    def biased_run(self):
-        '''
-        This is a biased run. It counts the total number of neighbors that a
-        dead tile from a grid has, and then uses percentages to turn it into a
-        live tile. Neighbors that are more numerous have a greater influence
-        than less numerous tiles.
-        '''
+    def find_neighbors(self, tile):
+        '''This returns a list of the 8-direction neighbors of a tile. '''
         for row_index, row in enumerate(self.grid):
             for tile_index, tile in enumerate(row):
                 if tile == 0:
@@ -112,7 +103,20 @@ class MapGenerator():
 
                     neighbors = top_row+bot_row+sides
                     # a combination of all of the neighbors into one list.
+                    return neighbors
 
+    def biased_run(self):
+        '''
+        This is a biased run. It counts the total number of neighbors that a
+        dead tile from a grid has, and then uses percentages to turn it into a
+        live tile. Neighbors that are more numerous have a greater influence
+        than less numerous tiles.
+        '''
+
+        for row_index, row in enumerate(self.grid):
+            for tile_index, tile in enumerate(row):
+                if tile == 0:
+                    neighbors = self.find_neighbors(tile)
                     symbol_count = {'^': 0,
                                     '*': 0,
                                     '~':  0,
