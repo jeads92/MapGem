@@ -59,7 +59,7 @@ class MapGenerator():
 
     def print_map(self):
         '''
-        print_map takes each tile in the grid and prints it out smoothly.
+        print_map takes each tile in the grid and prints it out.
         '''
         for row in self.grid:
             line = ''
@@ -78,10 +78,10 @@ class MapGenerator():
         for row_index, row in enumerate(self.grid):
             for tile_index, tile in enumerate(row):
                 if tile == 0:
-                    # Min and max_value represent the neighbors the the tile,
+                    # Min and max_value represent the neighbors of the tile,
                     # which makes it easier to parse neighbors in adjacent
                     # columns.
-                    min_value = max(0, tile_index - 1)  # Prevents min being -.
+                    min_value = max(0, tile_index - 1)  # Prevents min being negative.
                     max_value = tile_index + 1
                     if row_index != 0:
                         # The top row is sliced if it isnt the first row
@@ -147,7 +147,7 @@ class MapGenerator():
                             # Adds unused tiles to the relevant list.
 
                     decider = random.randint(0, 500)
-                    # alive tile will have a 1:500 chance of being unused tile
+                    # alive tile will have a 1:500 chance of being an unused tile
                     if decider == 1:
                         alive_tile = (unused_tiles[random.randint(
                             0, len(unused_tiles)-1)])
@@ -159,7 +159,7 @@ class MapGenerator():
 
     def build_biome(self, b_length, b_height):
         '''
-        Takes a character and creates a minigride out of it that represents
+        Takes a character and creates a mini-grid out of it that represents
         a biome.
         '''
         icon_random = random.randint(0, len(self.symbols) - 1)
