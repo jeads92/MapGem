@@ -67,12 +67,6 @@ class MapGenerator():
                 line += str(tile)
             print(line)
 
-    def return_neighbors(self, the_tile):
-        '''
-        return neighbors takes a tile and
-        uses slices to find the 8-D neighbors
-        '''
-
     def find_neighbors(self, tile):
         '''This returns a list of the 8-direction neighbors of a tile. '''
         for row_index, row in enumerate(self.grid):
